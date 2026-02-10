@@ -49,23 +49,21 @@
 </head>
 <body class="bg-white text-slate-900 garden-gradient selection:bg-green-100">
 
-    <!-- 导航栏 -->
     <nav class="fixed top-0 w-full z-50 glass border-b border-slate-100">
         <div class="max-w-[1440px] mx-auto px-8 lg:px-16 h-20 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-green-500 rounded-xl flex items-center justify-center shadow-lg shadow-green-100">
+                <div class="w-10 h-10 bg-green-500 rounded-xl flex items-center justify-center">
                     <i class="fas fa-leaf text-white text-lg"></i>
                 </div>
                 <span class="font-bold text-2xl tracking-tight text-slate-800">Echo</span>
             </div>
-            <div class="flex items-center gap-8">
-                <a href="#demo" class="text-base font-medium text-slate-600 hover:text-green-600 transition-colors">核心功能</a>
-                <a href="https://app.xinqian-design.site" target="_blank" class="bg-slate-900 text-white px-8 py-3 rounded-full text-base hover:bg-slate-800 transition-all shadow-md">立即体验</a>
+            <div class="flex items-center gap-8 text-base">
+                <a href="#demo" class="font-medium text-slate-600 hover:text-green-600 transition-colors">核心功能</a>
+                <a href="https://app.xinqian-design.site" target="_blank" class="bg-slate-900 text-white px-8 py-3 rounded-full hover:bg-slate-800 transition-all shadow-md">立即体验</a>
             </div>
         </div>
     </nav>
 
-    <!-- 第一页：Hero 沉浸体验区 -->
     <section class="section-full pt-28 px-8 lg:px-16">
         <div class="max-w-[1440px] mx-auto grid lg:grid-cols-2 gap-20 items-center">
             <div class="text-left">
@@ -91,9 +89,9 @@
             <div class="flex justify-center relative">
                 <div class="phone-mockup-main">
                     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-56 h-8 bg-[#1e293b] rounded-b-[2rem] z-20"></div>
-                    <!-- 终极兼容性视频标签 -->
+                    <!-- 视频标签保持精简，增加 id 供脚本调用 -->
                     <video 
-                        id="mainVideo"
+                        id="echoVideo"
                         autoplay 
                         muted 
                         loop 
@@ -103,9 +101,7 @@
                         preload="auto"
                         poster="ae16b529bc87f98a10ec1dfe4a015909.png"
                         class="w-full h-full object-contain bg-black">
-                        <!-- 加入更详细的 type 描述 -->
-                        <source src="demo.mp4" type="video/mp4; codecs='avc1.42E01E, mp4a.40.2'">
-                        您的浏览器不支持视频播放。
+                        <source src="demo.mp4" type="video/mp4">
                     </video>
                 </div>
                 <div class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-green-100/40 blur-[140px] rounded-full"></div>
@@ -113,14 +109,13 @@
         </div>
     </section>
 
-    <!-- 第二页：功能画廊区 -->
+    <!-- 其余部分保持不变 -->
     <section id="demo" class="py-40 bg-slate-50/50 border-t border-slate-100 px-8 lg:px-16">
         <div class="max-w-[1440px] mx-auto text-center">
-            <h2 class="text-5xl font-bold mb-6 text-slate-900">全链路复盘体验</h2>
+            <h2 class="text-5xl font-bold mb-6 text-slate-900 text-shadow-sm">全链路复盘体验</h2>
             <p class="text-slate-500 text-xl max-w-3xl mx-auto mb-20">从对话捕捉到情感回馈，构建完整的数字化成长资产</p>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 xl:gap-16">
-                <!-- 对话记录 -->
                 <div class="text-center group">
                     <div class="mini-phone-frame mb-10 border-slate-200">
                         <img src="ae16b529bc87f98a10ec1dfe4a015909.png" alt="对话记录">
@@ -132,7 +127,6 @@
                     <p class="text-base text-slate-500 px-4 leading-relaxed font-medium">用聊天代替撰写，AI 引导梳理当日产出，降低记录心理负担。</p>
                 </div>
 
-                <!-- 心情网格 -->
                 <div class="text-center group">
                     <div class="mini-phone-frame mb-10 border-slate-200">
                         <img src="6537792e8769067042d9e2d8b3aefb69.png" alt="心情网格">
@@ -144,7 +138,6 @@
                     <p class="text-base text-slate-500 px-4 leading-relaxed font-medium">将每日情绪转化为可视化的颜色看板，职场状态一目了然。</p>
                 </div>
 
-                <!-- 成长总结 -->
                 <div class="text-center group">
                     <div class="mini-phone-frame mb-10 border-slate-200">
                         <img src="fc6bb3783aa5bf58de1ccfe8b43706a4.png" alt="成长卡片">
@@ -156,7 +149,6 @@
                     <p class="text-base text-slate-500 px-4 leading-relaxed font-medium">自动生成回声卡片，提炼关键逻辑与改进点，让努力有迹可循。</p>
                 </div>
 
-                <!-- 周报分析 -->
                 <div class="text-center group">
                     <div class="mini-phone-frame mb-10 border-slate-200">
                         <img src="90f07c43515bc6c867d36c2861c3d772.png" alt="周报分析">
@@ -171,17 +163,13 @@
         </div>
     </section>
 
-    <!-- 研发保障 -->
     <footer class="py-32 bg-slate-900 text-white px-8 lg:px-16 text-center">
         <div class="max-w-4xl mx-auto flex flex-col items-center gap-12">
             <h3 class="text-4xl font-bold italic underline decoration-green-500 underline-offset-[16px]">研发与交付保障</h3>
-            <div class="flex flex-col items-center gap-4 text-slate-400">
-                <p>GitHub + Vercel 全链路敏捷交付 | H.264 移动端兼容性优化</p>
-                <a href="https://app.xinqian-design.site" target="_blank" class="bg-white text-green-700 px-20 py-6 rounded-[2rem] font-bold text-2xl hover:scale-105 transition-all shadow-2xl active:scale-95 mt-4">
-                    立即体验
-                </a>
-            </div>
-            <div class="flex items-center gap-4 text-slate-500">
+            <a href="https://app.xinqian-design.site" target="_blank" class="bg-white text-green-700 px-20 py-6 rounded-[2rem] font-bold text-2xl hover:scale-105 transition-all shadow-2xl active:scale-95">
+                立即体验
+            </a>
+            <div class="flex items-center gap-4 text-slate-500 mt-4">
                 <span class="font-bold text-slate-100">Xinqian Design</span>
                 <span>|</span>
                 <span>© 2026</span>
@@ -191,24 +179,33 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const video = document.getElementById('mainVideo');
+            const video = document.getElementById('echoVideo');
             
-            // 尝试在页面加载后播放视频
-            const forcePlay = () => {
+            // 策略1：强制静音并尝试启动
+            const attemptPlay = () => {
                 if (video) {
-                    video.muted = true; // 确保静音，否则自动播放 100% 失败
-                    video.play().catch(error => {
-                        console.log("Autoplay blocked, waiting for interaction");
-                        // 兜底：如果被拦截，监听第一次触摸页面即播放
-                        document.addEventListener('touchstart', () => {
-                            video.play();
-                        }, { once: true });
-                    });
+                    video.muted = true;
+                    video.play().catch(e => console.log('Autoplay deferred'));
                 }
             };
 
-            forcePlay();
+            // 策略2：监听用户第一次交互（点击或触摸）来触发播放
+            const triggerOnInteraction = () => {
+                attemptPlay();
+                // 播放成功后移除监听，节省性能
+                video.addEventListener('playing', () => {
+                    document.removeEventListener('touchstart', triggerOnInteraction);
+                    document.removeEventListener('mousedown', triggerOnInteraction);
+                }, { once: true });
+            };
 
+            document.addEventListener('touchstart', triggerOnInteraction, { once: true });
+            document.addEventListener('mousedown', triggerOnInteraction, { once: true });
+
+            // 初始尝试
+            attemptPlay();
+
+            // 滚动动画逻辑
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
