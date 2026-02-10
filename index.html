@@ -12,7 +12,6 @@
         .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); }
         .garden-gradient { background: radial-gradient(circle at top left, #f8fafc, #ffffff); }
         
-        /* 微调版主手机模型 - 宽度从 420px 优化至 380px，高度保持 700px */
         .phone-mockup-main {
             width: 380px;
             height: 700px;
@@ -24,7 +23,6 @@
             overflow: hidden;
         }
 
-        /* 微调版迷你手机框架 - 宽度从 360px 优化至 320px，比例改为 10/18 */
         .mini-phone-frame {
             width: 100%;
             max-width: 320px;
@@ -37,11 +35,6 @@
             overflow: hidden;
             margin: 0 auto;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .mini-phone-frame:hover {
-            transform: translateY(-10px);
-            border-color: #22c55e;
-            box-shadow: 0 35px 70px -15px rgba(34, 197, 94, 0.15);
         }
         .mini-phone-frame img {
             width: 100%;
@@ -58,7 +51,7 @@
 
     <!-- 导航栏 -->
     <nav class="fixed top-0 w-full z-50 glass border-b border-slate-100">
-        <div class="max-w-[1600px] mx-auto px-8 lg:px-16 h-20 flex items-center justify-between">
+        <div class="max-w-[1440px] mx-auto px-8 lg:px-16 h-20 flex items-center justify-between">
             <div class="flex items-center gap-3">
                 <div class="w-10 h-10 bg-green-500 rounded-xl flex items-center justify-center shadow-lg shadow-green-100">
                     <i class="fas fa-leaf text-white text-lg"></i>
@@ -74,7 +67,7 @@
 
     <!-- 第一页：Hero 沉浸体验区 -->
     <section class="section-full pt-28 px-8 lg:px-16">
-        <div class="max-w-[1600px] mx-auto grid lg:grid-cols-2 gap-20 items-center">
+        <div class="max-w-[1440px] mx-auto grid lg:grid-cols-2 gap-20 items-center">
             <div class="text-left">
                 <span class="inline-block px-5 py-2 mb-8 text-sm font-semibold tracking-wide text-green-700 uppercase bg-green-50 rounded-full">
                     记录职业成长的每一步
@@ -82,11 +75,11 @@
                 <h1 class="text-6xl md:text-7xl font-bold tracking-tight mb-10 leading-[1.1] text-slate-900">
                     Echo：<br>将实习碎片<br><span class="text-green-600">转化为深度成长洞察</span>
                 </h1>
-                <p class="text-xl text-slate-500 mb-12 max-w-2xl leading-relaxed">
+                <p class="text-xl text-slate-500 mb-12 max-w-xl leading-relaxed">
                     每一个职场瞬间都值得被记录。Echo 通过 AI 对话将你的碎片化思考结构化，让成长的足迹在心灵花园中彩色绽放。
                 </p>
                 <div class="flex flex-col sm:flex-row gap-6">
-                    <a href="https://app.xinqian-design.site" target="_blank" class="px-12 py-5 bg-green-600 text-white rounded-2xl font-bold text-xl hover:bg-green-700 transition-all shadow-xl shadow-green-100 text-center">
+                    <a href="https://app.xinqian-design.site" target="_blank" class="px-12 py-5 bg-green-600 text-white rounded-2xl font-bold text-xl hover:bg-green-700 transition-all shadow-xl shadow-green-200 text-center">
                         立即体验
                     </a>
                     <a href="#demo" class="px-12 py-5 bg-white text-slate-600 border border-slate-200 rounded-2xl font-bold text-xl hover:bg-slate-50 transition-all text-center">
@@ -95,16 +88,26 @@
                 </div>
             </div>
             
-            <!-- 主视频演示模型 (适配宽度微调) -->
             <div class="flex justify-center relative">
                 <div class="phone-mockup-main">
-                    <!-- 适配缩窄后的刘海 -->
                     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-56 h-8 bg-[#1e293b] rounded-b-[2rem] z-20"></div>
-                    <video autoplay muted loop playsinline class="w-full h-full object-contain bg-black">
-                        <source src="demo.mp4" type="video/mp4">
+                    <!-- 终极兼容性视频标签 -->
+                    <video 
+                        id="mainVideo"
+                        autoplay 
+                        muted 
+                        loop 
+                        playsinline 
+                        webkit-playsinline="true"
+                        x5-video-player-type="h5"
+                        preload="auto"
+                        poster="ae16b529bc87f98a10ec1dfe4a015909.png"
+                        class="w-full h-full object-contain bg-black">
+                        <!-- 加入更详细的 type 描述 -->
+                        <source src="demo.mp4" type="video/mp4; codecs='avc1.42E01E, mp4a.40.2'">
+                        您的浏览器不支持视频播放。
                     </video>
                 </div>
-                <!-- 装饰性背景光晕 -->
                 <div class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-green-100/40 blur-[140px] rounded-full"></div>
             </div>
         </div>
@@ -112,16 +115,12 @@
 
     <!-- 第二页：功能画廊区 -->
     <section id="demo" class="py-40 bg-slate-50/50 border-t border-slate-100 px-8 lg:px-16">
-        <div class="max-w-[1600px] mx-auto">
-            <div class="text-center mb-28">
-                <h2 class="text-5xl font-bold mb-6 text-slate-900 text-shadow-sm">全链路复盘体验</h2>
-                <p class="text-slate-500 text-xl max-w-3xl mx-auto">从对话捕捉到情感回馈，构建完整的数字化成长资产</p>
-                <div class="w-20 h-1.5 bg-green-500 mx-auto mt-10 rounded-full shadow-sm"></div>
-            </div>
+        <div class="max-w-[1440px] mx-auto text-center">
+            <h2 class="text-5xl font-bold mb-6 text-slate-900">全链路复盘体验</h2>
+            <p class="text-slate-500 text-xl max-w-3xl mx-auto mb-20">从对话捕捉到情感回馈，构建完整的数字化成长资产</p>
 
-            <!-- 四个手机比例框架 (宽版微调) -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 xl:gap-16">
-                <!-- 功能 1 -->
+                <!-- 对话记录 -->
                 <div class="text-center group">
                     <div class="mini-phone-frame mb-10 border-slate-200">
                         <img src="ae16b529bc87f98a10ec1dfe4a015909.png" alt="对话记录">
@@ -133,7 +132,7 @@
                     <p class="text-base text-slate-500 px-4 leading-relaxed font-medium">用聊天代替撰写，AI 引导梳理当日产出，降低记录心理负担。</p>
                 </div>
 
-                <!-- 功能 2 -->
+                <!-- 心情网格 -->
                 <div class="text-center group">
                     <div class="mini-phone-frame mb-10 border-slate-200">
                         <img src="6537792e8769067042d9e2d8b3aefb69.png" alt="心情网格">
@@ -145,7 +144,7 @@
                     <p class="text-base text-slate-500 px-4 leading-relaxed font-medium">将每日情绪转化为可视化的颜色看板，职场状态一目了然。</p>
                 </div>
 
-                <!-- 功能 3 -->
+                <!-- 成长总结 -->
                 <div class="text-center group">
                     <div class="mini-phone-frame mb-10 border-slate-200">
                         <img src="fc6bb3783aa5bf58de1ccfe8b43706a4.png" alt="成长卡片">
@@ -157,7 +156,7 @@
                     <p class="text-base text-slate-500 px-4 leading-relaxed font-medium">自动生成回声卡片，提炼关键逻辑与改进点，让努力有迹可循。</p>
                 </div>
 
-                <!-- 功能 4 -->
+                <!-- 周报分析 -->
                 <div class="text-center group">
                     <div class="mini-phone-frame mb-10 border-slate-200">
                         <img src="90f07c43515bc6c867d36c2861c3d772.png" alt="周报分析">
@@ -172,70 +171,44 @@
         </div>
     </section>
 
-    <!-- 核心构思板块 -->
-    <section class="py-40 px-8 lg:px-16 bg-white border-t border-slate-100">
-        <div class="max-w-[1600px] mx-auto">
-            <div class="text-center mb-24">
-                <h2 class="text-4xl font-bold text-slate-800 tracking-tight">产品设计构思</h2>
-            </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
-                <div class="p-12 rounded-[3.5rem] bg-slate-50/80 border border-slate-100 shadow-sm transition-all hover:shadow-xl hover:bg-white">
-                    <h5 class="font-bold mb-6 text-2xl text-slate-900">AI 引导记录</h5>
-                    <p class="text-lg text-slate-500 leading-relaxed font-medium">通过简单的对话实时提炼今日工作重点、逻辑思考和待改进点。</p>
-                </div>
-                <div class="p-12 rounded-[3.5rem] bg-slate-50/80 border border-slate-100 shadow-sm transition-all hover:shadow-xl hover:bg-white">
-                    <h5 class="font-bold mb-6 text-2xl text-slate-900">自动总结卡片</h5>
-                    <p class="text-lg text-slate-500 leading-relaxed font-medium">将散乱记录转化为结构化的回声卡片，通过视觉仪式感提升获得感。</p>
-                </div>
-                <div class="p-12 rounded-[3.5rem] bg-slate-50/80 border border-slate-100 shadow-sm transition-all hover:shadow-xl hover:bg-white">
-                    <h5 class="font-bold mb-6 text-2xl text-slate-900">当日数据归档</h5>
-                    <p class="text-lg text-slate-500 leading-relaxed font-medium">采用轻量级本地存储方案，建立输入-处理-归档的数据闭环。</p>
-                </div>
-                <div class="p-12 rounded-[3.5rem] bg-slate-50/80 border border-slate-100 shadow-sm transition-all hover:shadow-xl hover:bg-white">
-                    <h5 class="font-bold mb-6 text-2xl text-slate-900">四色心情看板</h5>
-                    <div class="grid grid-cols-2 gap-6 mt-8">
-                        <div class="text-sm font-semibold flex items-center gap-3"><span class="color-dot bg-green-500 scale-125"></span> 开心</div>
-                        <div class="text-sm font-semibold flex items-center gap-3"><span class="color-dot bg-blue-400 scale-125"></span> 一般</div>
-                        <div class="text-sm font-semibold flex items-center gap-3"><span class="color-dot bg-red-400 scale-125"></span> 烦闷</div>
-                        <div class="text-sm font-semibold flex items-center gap-3"><span class="color-dot bg-yellow-400 scale-125"></span> 焦虑</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 研发保障与页脚 -->
-    <section class="py-32 bg-slate-900 text-white px-8 lg:px-16">
-        <div class="max-w-[1600px] mx-auto flex flex-col lg:flex-row justify-between items-center gap-24">
-            <div class="text-left max-w-2xl">
-                <h3 class="text-4xl font-bold mb-10 underline decoration-green-500 underline-offset-[16px]">研发与交付保障</h3>
-                <p class="text-slate-400 text-xl leading-relaxed mb-12">
-                    作为产品负责人，我通过工程化手段确保产品从概念到落地的稳定与高效。
-                </p>
-                <ul class="space-y-6 text-base text-slate-400 font-medium">
-                    <li class="flex items-center gap-4"><i class="fas fa-check-circle text-green-500 text-lg"></i> GitHub + Vercel 全链路敏捷交付</li>
-                    <li class="flex items-center gap-4"><i class="fas fa-check-circle text-green-500 text-lg"></i> System Prompt 深度调优保障 AI 质量</li>
-                    <li class="flex items-center gap-4"><i class="fas fa-check-circle text-green-500 text-lg"></i> LocalStorage Hub 保障数据一致性</li>
-                </ul>
-            </div>
-            <div class="flex flex-col items-center gap-12 bg-slate-800/40 p-16 rounded-[4rem] border border-slate-700/50 shadow-2xl">
-                <a href="https://app.xinqian-design.site" target="_blank" class="bg-white text-green-700 px-24 py-6 rounded-[2rem] font-bold text-2xl hover:scale-105 transition-all shadow-2xl active:scale-95">
+    <!-- 研发保障 -->
+    <footer class="py-32 bg-slate-900 text-white px-8 lg:px-16 text-center">
+        <div class="max-w-4xl mx-auto flex flex-col items-center gap-12">
+            <h3 class="text-4xl font-bold italic underline decoration-green-500 underline-offset-[16px]">研发与交付保障</h3>
+            <div class="flex flex-col items-center gap-4 text-slate-400">
+                <p>GitHub + Vercel 全链路敏捷交付 | H.264 移动端兼容性优化</p>
+                <a href="https://app.xinqian-design.site" target="_blank" class="bg-white text-green-700 px-20 py-6 rounded-[2rem] font-bold text-2xl hover:scale-105 transition-all shadow-2xl active:scale-95 mt-4">
                     立即体验
                 </a>
-                <div class="text-center">
-                    <p class="italic text-xl text-slate-300 font-serif mb-6">“记录成长的每一步，让回响更有力量。”</p>
-                    <div class="flex items-center justify-center gap-4 text-slate-400">
-                        <span class="font-bold text-slate-100 text-lg">Xinqian Design</span>
-                        <span class="text-slate-700 text-xl">|</span>
-                        <span>© 2026</span>
-                    </div>
-                </div>
+            </div>
+            <div class="flex items-center gap-4 text-slate-500">
+                <span class="font-bold text-slate-100">Xinqian Design</span>
+                <span>|</span>
+                <span>© 2026</span>
             </div>
         </div>
-    </section>
+    </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            const video = document.getElementById('mainVideo');
+            
+            // 尝试在页面加载后播放视频
+            const forcePlay = () => {
+                if (video) {
+                    video.muted = true; // 确保静音，否则自动播放 100% 失败
+                    video.play().catch(error => {
+                        console.log("Autoplay blocked, waiting for interaction");
+                        // 兜底：如果被拦截，监听第一次触摸页面即播放
+                        document.addEventListener('touchstart', () => {
+                            video.play();
+                        }, { once: true });
+                    });
+                }
+            };
+
+            forcePlay();
+
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -245,7 +218,7 @@
                 });
             }, { threshold: 0.1 });
 
-            document.querySelectorAll('section, .mini-phone-frame, .p-12').forEach(el => {
+            document.querySelectorAll('section, .mini-phone-frame').forEach(el => {
                 el.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
                 observer.observe(el);
             });
