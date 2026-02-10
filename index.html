@@ -89,7 +89,6 @@
             <div class="flex justify-center relative">
                 <div class="phone-mockup-main">
                     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-56 h-8 bg-[#1e293b] rounded-b-[2rem] z-20"></div>
-                    <!-- 视频标签保持精简，增加 id 供脚本调用 -->
                     <video 
                         id="echoVideo"
                         autoplay 
@@ -97,7 +96,8 @@
                         loop 
                         playsinline 
                         webkit-playsinline="true"
-                        x5-video-player-type="h5"
+                        x5-video-player-type="h5-page"
+                        x5-video-orientation="portrait"
                         preload="auto"
                         poster="ae16b529bc87f98a10ec1dfe4a015909.png"
                         class="w-full h-full object-contain bg-black">
@@ -109,7 +109,6 @@
         </div>
     </section>
 
-    <!-- 其余部分保持不变 -->
     <section id="demo" class="py-40 bg-slate-50/50 border-t border-slate-100 px-8 lg:px-16">
         <div class="max-w-[1440px] mx-auto text-center">
             <h2 class="text-5xl font-bold mb-6 text-slate-900 text-shadow-sm">全链路复盘体验</h2>
@@ -181,31 +180,38 @@
         document.addEventListener('DOMContentLoaded', () => {
             const video = document.getElementById('echoVideo');
             
-            // 策略1：强制静音并尝试启动
-            const attemptPlay = () => {
-                if (video) {
-                    video.muted = true;
-                    video.play().catch(e => console.log('Autoplay deferred'));
+            // 核心唤醒函数
+            const wakeUpVideo = () => {
+                if (video && video.paused) {
+                    video.muted = true; // 必须静音
+                    video.play().then(() => {
+                        console.log('Video started successfully');
+                        // 播放成功后移除全局监听，防止性能浪费
+                        window.removeEventListener('touchstart', wakeUpVideo);
+                        window.removeEventListener('click', wakeUpVideo);
+                        window.removeEventListener('scroll', wakeUpVideo);
+                    }).catch(err => {
+                        console.log('Video play failed, retrying on next interaction');
+                    });
                 }
             };
 
-            // 策略2：监听用户第一次交互（点击或触摸）来触发播放
-            const triggerOnInteraction = () => {
-                attemptPlay();
-                // 播放成功后移除监听，节省性能
-                video.addEventListener('playing', () => {
-                    document.removeEventListener('touchstart', triggerOnInteraction);
-                    document.removeEventListener('mousedown', triggerOnInteraction);
-                }, { once: true });
-            };
-
-            document.addEventListener('touchstart', triggerOnInteraction, { once: true });
-            document.addEventListener('mousedown', triggerOnInteraction, { once: true });
+            // 策略：监听任何可能的交互行为
+            window.addEventListener('touchstart', wakeUpVideo, { once: false });
+            window.addEventListener('click', wakeUpVideo, { once: false });
+            window.addEventListener('scroll', wakeUpVideo, { once: false });
 
             // 初始尝试
-            attemptPlay();
+            wakeUpVideo();
 
-            // 滚动动画逻辑
+            // 定时器补丁：每2秒检查一次是否被系统自动暂停
+            setInterval(() => {
+                if (video && video.paused) {
+                    wakeUpVideo();
+                }
+            }, 2000);
+
+            // 滚动显示动画
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
